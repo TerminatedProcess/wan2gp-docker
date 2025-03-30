@@ -1,0 +1,23 @@
+include:
+  - docker-compose.networks.yml
+services:
+  offline-wan2gp-webui:
+    environment:
+      OFFLINE_MODE: true
+    extends:
+      file: docker-compose.base.yml
+      service: wan2gp-webui
+    depends_on:
+      - wan2gp-webui-tunnel
+    networks:
+      - wan2gp-webui-internal-network
+  wan2gp-webui-tunnel:
+    build:
+      dockerfile: docker/tunnel/Dockerfile
+    image: wan2gp_web_ui_tunnel
+    ports:
+      - "${WEBUI_PORT}:${WEBUI_PORT}"
+    networks:
+      - wan2gp-webui-external-network
+      - wan2gp-webui-internal-network
+    command: [ "socat", "tcp-listen:${WEBUI_PORT},reuseaddr,fork", "tcp:offline-wan2gp-webui:${WEBUI_PORT}" ]

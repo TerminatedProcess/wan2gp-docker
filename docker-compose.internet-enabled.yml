@@ -1,0 +1,11 @@
+include:
+  - docker-compose.networks.yml
+services:
+  internet-enabled-wan2gp-webui:
+    ports:
+    - "${WEBUI_PORT}:${WEBUI_PORT}"
+    extends:
+      file: docker-compose.base.yml
+      service: wan2gp-webui
+    networks:
+      - wan2gp-webui-external-network

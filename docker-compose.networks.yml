@@ -1,0 +1,6 @@
+networks:
+  wan2gp-webui-external-network:
+    driver: bridge
+  wan2gp-webui-internal-network:
+    driver: bridge
+    internal: true # Internal network with no external (internet) access
