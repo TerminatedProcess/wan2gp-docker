@@ -10,7 +10,7 @@ cache_dir="$repo_dir/cache"
 home_dir="$cache_dir/home"
 tmp_dir="$repo_dir/tmp"
 
-gradio_outputs_dir="$repo_dir/gradio_outputs_dir"
+gradio_outputs_dir="$repo_dir/gradio_outputs"
 
 echo Configuring environment for \"$1\" webui.
 echo ""

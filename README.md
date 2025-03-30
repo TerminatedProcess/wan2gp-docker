@@ -1,5 +1,5 @@
-# Personal Stable Diffusion Web UI Docker
-Privacy focused local docker environment for WAN2GP Web UI with offline mode support and easy access to files.
+# Personal WAN2GP Web UI Docker
+Privacy focused local docker environment for [WAN2GP](https://github.com/deepbeepmeep/Wan2GP) Web UI with offline mode support and easy access to files.
 
 ## Features
 - Easy to install, setup and launch
