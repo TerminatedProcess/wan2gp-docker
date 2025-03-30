@@ -225,13 +225,13 @@ export WAN2GP_WEBUI_RESTART=tmp/restart
 while [[ "$KEEP_GOING" -eq "1" ]]; do
     if [[ ! -z "${ACCELERATE}" ]] && [ ${ACCELERATE}="True" ] && [ -x "$(command -v accelerate)" ]; then
         printf "\n%s\n" "${delimiter}"
-        printf "Accelerating launch.py..."
+        printf "Accelerating ${LAUNCH_SCRIPT}..."
         printf "\n%s\n" "${delimiter}"
         prepare_tcmalloc
         accelerate launch --num_cpu_threads_per_process=6 "${LAUNCH_SCRIPT}" "$@"
     else
         printf "\n%s\n" "${delimiter}"
-        printf "Launching launch.py..."
+        printf "Launching ${LAUNCH_SCRIPT}..."
         printf "\n%s\n" "${delimiter}"
         prepare_tcmalloc
         "${python_cmd}" -u "${LAUNCH_SCRIPT}" "$@"
