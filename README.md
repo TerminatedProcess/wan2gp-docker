@@ -39,12 +39,7 @@ Once the webui has finished downloading and you have made sure it works properly
 
 **Note that offline mode does not offer complete privacy as your browser could still leak data through javascript, see the section on [browser safety](https://github.com/LentoMan/personal-docker-docs/blob/main/browser-safety.md) in the [supplementary documentation](https://github.com/LentoMan/personal-docker-docs) for workarounds.**
 
-Also note that some actions may require online access the first time to download all the models and other requirements. 
-
-Installing and updating extensions will naturally also require launching with internet:
-```bash
-./run-with-internet.sh
-```
+Also note that some actions like the LoRA download button may require online access the first time to download all the models. 
 
 ## Usage
 
