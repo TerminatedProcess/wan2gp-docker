@@ -18,9 +18,9 @@ Privacy focused local docker environment for [WAN2GP](https://github.com/deepbee
 Clone or download this repository into your Linux or WSL distro.
 
 Launch the setup script:
- ```bash
- bash setup.sh
- ```
+```bash
+bash setup.sh
+```
 
 Next, run the build script to build the docker images:
 ```bash
@@ -41,6 +41,13 @@ Once the webui has finished downloading and you have made sure it works properly
 
 Also note that some actions like the LoRA download button may require online access the first time to download all the models. 
 
+## Updating Wan2GP
+
+Launch the update script to pull new changes:
+```bash
+./update.sh
+```
+
 ## Usage
 
 ### Accessing the webui
@@ -49,9 +56,15 @@ The webui is accessible from your browser through:
 http://localhost:7860/
 ```
 
+### Configuration Launch
+
+If you want to reinstall torch or make the pip requirements check during launch more quiet, edit `webui-user.sh`.
+
+### Configuration Directories
+
+The home directory inside the container is stored at `Wan2GP/cache/home`, the tmp directory is stored at `Wan2GP/tmp` and the python venv is stored `Wan2GP/venv`.
+
+You can remap and mount directories by editing `docker-compose.override.yml` and `docker-compose.internet-enabled.override.yml`.
+
 ## Supplementary Documentation
 For additional technical documentation and setup guides, check out the [Personal Docker Docs](https://github.com/LentoMan/personal-docker-docs) repository.
-
-## Future Plans
-- Add update script (git pull)
-- Add a docker compose override sample template for binding directories like models and output

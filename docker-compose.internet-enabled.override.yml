@@ -1,0 +1,3 @@
+services:
+  internet-enabled-wan2gp-webui:
+# Check the docker-compose.override.yml.sample and add a volume section here if you want to override directories in internet-enabled mode
