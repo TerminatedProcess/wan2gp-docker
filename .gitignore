@@ -1,6 +1,3 @@
 Wan2GP/
 
-webui-user.sh
-docker-compose.override.yml
-docker-compose.internet-enabled.override.yml
 user.env
