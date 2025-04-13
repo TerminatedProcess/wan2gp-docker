@@ -32,6 +32,12 @@ services:
         source: ./docker/webui/webui.sh
         target: ${CONTAINER_WEBUI_ROOT}/webui.sh
         read_only: true
+
+      # Mount webui-user script
+      - type: bind
+        source: ./webui-user.sh
+        target: ${CONTAINER_WEBUI_ROOT}/webui-user.sh
+        read_only: true
     deploy:
       resources:
         reservations:

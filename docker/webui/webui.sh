@@ -85,7 +85,6 @@ delimiter="################################################################"
 
 printf "\n%s\n" "${delimiter}"
 printf "\e[1m\e[32mInstall script for Wan2GP + Web UI\n"
-printf "\e[1m\e[34mTested on Debian 11 (Bullseye), Fedora 34+ and openSUSE Leap 15.4 or newer.\e[0m"
 printf "\n%s\n" "${delimiter}"
 
 # Do not run as root
@@ -170,9 +169,24 @@ else
     printf "\n%s\n" "${delimiter}"
 fi
 
-pip install torch==2.6.0 torchvision torchaudio --index-url https://download.pytorch.org/whl/test/cu124
-pip install -r requirements.txt
-pip install sageattention==1.0.6
+printf "\n%s\n" "${delimiter}"
+printf "Checking and installing python dependencies..."
+
+if [[ "${reinstall_torch}" == "true" ]]
+then
+    echo "Reinstalling torch, to skip this in the future, comment or set reinstall_torch to false in webui-user.sh"
+    torch_pip_params="--force-reinstall --upgrade"
+fi
+
+if [[ "${quiet_pip}" == "true" ]]
+then
+    extra_pip_params="-q"
+fi
+
+pip install $extra_pip_params $torch_pip_params torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128
+pip install $extra_pip_params -r requirements.txt
+pip install $extra_pip_params sageattention==1.0.6
+printf "\n%s\n" "${delimiter}"
 
 # Try using TCMalloc on Linux
 prepare_tcmalloc() {
@@ -220,24 +234,8 @@ prepare_tcmalloc() {
     fi
 }
 
-KEEP_GOING=1
-export WAN2GP_WEBUI_RESTART=tmp/restart
-while [[ "$KEEP_GOING" -eq "1" ]]; do
-    if [[ ! -z "${ACCELERATE}" ]] && [ ${ACCELERATE}="True" ] && [ -x "$(command -v accelerate)" ]; then
-        printf "\n%s\n" "${delimiter}"
-        printf "Accelerating ${LAUNCH_SCRIPT}..."
-        printf "\n%s\n" "${delimiter}"
-        prepare_tcmalloc
-        accelerate launch --num_cpu_threads_per_process=6 "${LAUNCH_SCRIPT}" "$@"
-    else
-        printf "\n%s\n" "${delimiter}"
-        printf "Launching ${LAUNCH_SCRIPT}..."
-        printf "\n%s\n" "${delimiter}"
-        prepare_tcmalloc
-        "${python_cmd}" -u "${LAUNCH_SCRIPT}" "$@"
-    fi
-
-    if [[ ! -f tmp/restart ]]; then
-        KEEP_GOING=0
-    fi
-done
+printf "\n%s\n" "${delimiter}"
+printf "Launching ${LAUNCH_SCRIPT}..."
+printf "\n%s\n" "${delimiter}"
+prepare_tcmalloc
+"${python_cmd}" -u "${LAUNCH_SCRIPT}" "$@"
