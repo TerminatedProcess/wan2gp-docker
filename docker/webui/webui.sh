@@ -59,7 +59,7 @@ fi
 
 if [[ -z "${LAUNCH_SCRIPT}" ]]
 then
-    LAUNCH_SCRIPT="gradio_server.py"
+    LAUNCH_SCRIPT="wgp.py"
 fi
 
 # this script cannot be run as root by default
