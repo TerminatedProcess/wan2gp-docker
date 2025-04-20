@@ -11,6 +11,7 @@ home_dir="$cache_dir/home"
 tmp_dir="$repo_dir/tmp"
 
 gradio_outputs_dir="$repo_dir/gradio_outputs"
+outputs_dir="$repo_dir/outputs"
 
 echo Configuring environment for \"$1\" webui.
 echo ""
@@ -50,6 +51,11 @@ fi
 if [ ! -d "$gradio_outputs_dir" ]; then
   echo Creating \"$gradio_outputs_dir\" outputs directory.
   mkdir -p "$gradio_outputs_dir"
+fi
+
+if [ ! -d "$outputs_dir" ]; then
+  echo Creating \"$outputs_dir\" outputs directory.
+  mkdir -p "$outputs_dir"
 fi
 
 echo ""

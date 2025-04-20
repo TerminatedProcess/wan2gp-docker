@@ -14,6 +14,11 @@ services:
       # outputs
       - type: bind
         source: /mnt/c/AI/Videos
+        target: ${CONTAINER_WEBUI_ROOT}/outputs
+        read_only: false
+      # gradio_outputs
+      - type: bind
+        source: /mnt/c/AI/Videos
         target: ${CONTAINER_WEBUI_ROOT}/gradio_outputs
         read_only: false
       # tmp
