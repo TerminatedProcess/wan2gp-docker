@@ -22,4 +22,5 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
             libglib2.0-0 \
             bc \
             build-essential \
-            inetutils-ping
+            inetutils-ping \
+            ffmpeg
