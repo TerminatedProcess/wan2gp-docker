@@ -74,6 +74,12 @@ do
     esac
 done
 
+# disable gradio analytics
+export GRADIO_ANALYTICS_ENABLED="False"
+
+# disable huggingface hub telemetry
+export HF_HUB_DISABLE_TELEMETRY=1
+
 # Disable sentry logging
 export ERROR_REPORTING=FALSE
 
