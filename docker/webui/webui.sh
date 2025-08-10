@@ -240,6 +240,10 @@ prepare_tcmalloc() {
     fi
 }
 
+if [[ "$OFFLINE_MODE" == "true" ]]; then
+    export HF_HUB_OFFLINE=1
+fi
+
 printf "\n%s\n" "${delimiter}"
 printf "Launching ${LAUNCH_SCRIPT}..."
 printf "\n%s\n" "${delimiter}"
