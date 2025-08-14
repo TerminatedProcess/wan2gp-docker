@@ -1,0 +1,5 @@
+alias build='./build-docker-images.sh'
+alias runi='./run-with-internet.sh'
+alias runo='./run-offline.sh'
+alias symlink='./link_wan_models_with_loras.sh'
+alias dsn='./shutdown.sh'
